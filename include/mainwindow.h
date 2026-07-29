@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 
@@ -17,7 +16,18 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_btn_imageSelect_clicked();
+
+    void on_btn_exit_clicked();
+
+    void on_btn_convert_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    void selectImage();
+    void convertImage();
+
+    QString filePath;
 };
-#endif // MAINWINDOW_H
