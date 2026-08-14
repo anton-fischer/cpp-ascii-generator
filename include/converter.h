@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include <QString>
 
 class Converter
 {
@@ -8,5 +8,5 @@ public:
     Converter() = default;
     ~Converter() = default;
 
-    void convert(const std::string& filepath);
+    QString convert(const QString& filepath, const unsigned int outputWidth = 100);
 };

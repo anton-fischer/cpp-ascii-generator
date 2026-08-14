@@ -48,7 +48,9 @@ void MainWindow::selectImage()
 void MainWindow::convertImage()
 {
     Converter converter;
-    converter.convert(filePath.toStdString());
+    const QString& result = converter.convert(filePath, 50);
+
+    ui->txt_output->setPlainText(result);
 }
 
 void MainWindow::on_btn_imageSelect_clicked()
