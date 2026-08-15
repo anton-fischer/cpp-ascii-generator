@@ -22,6 +22,11 @@ void Settings::setHeight(unsigned int height)
     this->height = height;
 }
 
+void Settings::setInvert(bool invert)
+{
+    this->invert = invert;
+}
+
 QString Settings::getChars()
 {
     return this->chars;
@@ -35,4 +40,9 @@ unsigned int Settings::getWidth()
 unsigned int Settings::getHeight()
 {
     return this->height;
+}
+
+bool Settings::getInvert()
+{
+    return this->invert;
 }

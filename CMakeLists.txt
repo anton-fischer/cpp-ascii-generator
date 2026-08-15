@@ -20,6 +20,7 @@ file(GLOB_RECURSE PROJECT_SOURCES
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ascii-generator
+        resources.qrc
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
@@ -40,6 +41,10 @@ else()
         )
     endif()
 endif()
+
+target_include_directories(ascii-generator PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 
 target_link_libraries(ascii-generator PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 

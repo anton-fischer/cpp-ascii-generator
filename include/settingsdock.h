@@ -23,6 +23,8 @@ private slots:
 
     void on_slider_height_sliderMoved(int position);
 
+    void on_cbx_invert_clicked();
+
 private:
     Ui::SettingsDock *ui;
 

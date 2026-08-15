@@ -11,10 +11,12 @@ public:
     void setChars(const QString& chars);
     void setWidth(unsigned int width);
     void setHeight(unsigned int height);
+    void setInvert(bool invert);
 
     QString getChars();
     unsigned int getWidth();
     unsigned int getHeight();
+    bool getInvert();
 
 private:
     Settings() = default;
@@ -27,5 +29,5 @@ private:
     QString chars = "@%#*+=-:. ";
     unsigned int width = 50;
     unsigned int height = 50;
-
+    bool invert = false;
 };

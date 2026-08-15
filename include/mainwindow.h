@@ -18,6 +18,7 @@ public:
 
     void selectImage();
     void convertImage();
+    void copyAscii();
 
     QString getFilePath();
 
@@ -32,8 +33,8 @@ private:
     Ui::MainWindow *ui;
 
     void showSettingsMenu();
+    void showStatusBarMessage(QString message, unsigned int timeout) const;
 
     QString filePath;
-
     QDockWidget* settingsDock = nullptr;
 };

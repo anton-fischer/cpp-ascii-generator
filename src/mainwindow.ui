@@ -57,7 +57,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lbl_imageSelect">
+         <widget class="QLabel" name="lbl_imagePath">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -89,7 +89,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="lbl_image">
+         <widget class="ClickableLabel" name="lbl_image">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -108,10 +108,23 @@
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">color: grey</string>
+           <string notr="true">QLabel {
+	color: grey;
+	border: 1px solid grey;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="text">
-           <string>No Image Selected</string>
+           <string>Select Any Image ...</string>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
           </property>
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -146,7 +159,50 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="txt_output">
+         <widget class="ClickableLabel" name="lbl_output">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>400</width>
+            <height>380</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+	color: grey;
+	border: 1px solid grey;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Plain</enum>
+          </property>
+          <property name="text">
+           <string>... Then Click Here To Copy ASCII</string>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="ClickablePlainTextEdit" name="txt_output">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -165,8 +221,33 @@
             <bold>false</bold>
            </font>
           </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPlainTextEdit {
+    border: 1px solid grey;
+	border-radius: 0px;
+	background-color: transparent;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Plain</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+          </property>
+          <property name="lineWrapMode">
+           <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+          </property>
           <property name="readOnly">
            <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string/>
           </property>
          </widget>
         </item>
@@ -219,6 +300,18 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ClickableLabel</class>
+   <extends>QLabel</extends>
+   <header>clickablelabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ClickablePlainTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>clickableplaintextedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -13,52 +13,32 @@
   <property name="minimumSize">
    <size>
     <width>330</width>
-    <height>128</height>
+    <height>133</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>DockWidget</string>
+   <string>Settings</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="lbl_title">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Settings</string>
-      </property>
-     </widget>
-    </item>
     <item>
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="lbl_chars">
         <property name="text">
-         <string>Chars</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="lbl_width">
-        <property name="text">
-         <string>Width</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lbl_height">
-        <property name="text">
-         <string>Height</string>
+         <string>Chars (dark to bright):</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="input_chars"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbl_width">
+        <property name="text">
+         <string>Ascii-Width:</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
        <widget class="QSlider" name="slider_width">
@@ -67,10 +47,31 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbl_height">
+        <property name="text">
+         <string>Ascii-Height:</string>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="1">
        <widget class="QSlider" name="slider_height">
         <property name="orientation">
          <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lbl_invert">
+        <property name="text">
+         <string>Invert Ascii:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QCheckBox" name="cbx_invert">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>

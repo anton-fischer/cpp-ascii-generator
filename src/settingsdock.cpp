@@ -43,17 +43,21 @@ void SettingsDock::on_input_chars_textChanged(const QString &chars)
     regenerateAscii();
 }
 
-
 void SettingsDock::on_slider_width_sliderMoved(int width)
 {
     Settings::instance().setWidth(width);
     regenerateAscii();
 }
 
-
 void SettingsDock::on_slider_height_sliderMoved(int height)
 {
-    Settings::instance().setWidth(height);
+    Settings::instance().setHeight(height);
+    regenerateAscii();
+}
+
+void SettingsDock::on_cbx_invert_clicked()
+{
+    Settings::instance().setInvert(ui->cbx_invert->isChecked());
     regenerateAscii();
 }
 

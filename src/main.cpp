@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     a.setWindowIcon(QIcon(":/images/resources/ascii.png"));
 
     MainWindow w;
-    w.setWindowTitle("ascii-generator");
+    w.setWindowTitle("Ascii-Art-Generator");
     w.show();
     return a.exec();
 }
