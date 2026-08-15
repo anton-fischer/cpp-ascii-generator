@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>859</width>
-    <height>533</height>
+    <width>861</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,94 +17,106 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="topMargin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QLabel" name="lbl_title">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="topMargin">
+         <number>0</number>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>ASCII-Art-Generator</string>
-        </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="lbl_title">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>ASCII-Art-Generator</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbl_imageSelect">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Please Select An Image to Convert</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QLabel" name="lbl_image">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>400</width>
-              <height>380</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: grey</string>
-            </property>
-            <property name="text">
-             <string>No Image Selected</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="lbl_imageSelect">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>18</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>18</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Please Select An Image to Convert</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QLabel" name="lbl_image">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>400</width>
+            <height>380</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: grey</string>
+          </property>
+          <property name="text">
+           <string>No Image Selected</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="lbl_arrow">
@@ -176,12 +188,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btn_convert">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="QPushButton" name="btn_settings">
           <property name="text">
-           <string>CONVERT</string>
+           <string>Settings</string>
           </property>
          </widget>
         </item>
@@ -203,7 +212,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>859</width>
+     <width>861</width>
      <height>21</height>
     </rect>
    </property>

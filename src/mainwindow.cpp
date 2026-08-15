@@ -1,5 +1,7 @@
 #include "../include/mainwindow.h"
 #include "../include/converter.h"
+#include "../include/settings.h"
+#include "../include/settingsdock.h"
 
 #include "./ui_mainwindow.h"
 
@@ -31,7 +33,6 @@ void MainWindow::selectImage()
         this->filePath = filePath;
 
         ui->lbl_imageSelect->setText(filePath);
-        ui->btn_convert->setDisabled(false);
 
         QPixmap pixmap(filePath);
 
@@ -42,15 +43,38 @@ void MainWindow::selectImage()
                 Qt::SmoothTransformation
             )
         );
+
+        convertImage();
     }
 }
 
 void MainWindow::convertImage()
 {
+    const QString chars = Settings::instance().getChars();
+    const unsigned int width = Settings::instance().getWidth();
+    const unsigned int height = Settings::instance().getHeight(); // TODO this is ignored as of now
+
     Converter converter;
-    const QString& result = converter.convert(filePath, 50);
+    QString result = converter.convert(filePath, width, chars);
 
     ui->txt_output->setPlainText(result);
+}
+
+void MainWindow::showSettingsMenu()
+{
+    if (!settingsDock)
+    {
+        settingsDock = new SettingsDock(this);
+        addDockWidget(Qt::RightDockWidgetArea, settingsDock);
+    }
+
+    settingsDock->show();
+    settingsDock->raise();
+}
+
+QString MainWindow::getFilePath()
+{
+    return this->filePath;
 }
 
 void MainWindow::on_btn_imageSelect_clicked()
@@ -58,9 +82,9 @@ void MainWindow::on_btn_imageSelect_clicked()
     selectImage();
 }
 
-void MainWindow::on_btn_convert_clicked()
+void MainWindow::on_btn_settings_clicked()
 {
-    convertImage();
+    showSettingsMenu();
 }
 
 void MainWindow::on_btn_exit_clicked()

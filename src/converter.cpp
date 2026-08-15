@@ -2,9 +2,8 @@
 
 #include <QImage>
 
-QString Converter::convert(const QString& filepath, const unsigned int outputWidth /*= 100*/)
+QString Converter::convert(const QString& filepath, const unsigned int outputWidth /*= 100*/, const QString& chars /*= "@%#*+=-:. "*/)
 {
-    const QString chars = "@%#*+=-:. ";
     QImage image(filepath);
 
     if (image.isNull()) return QString();
