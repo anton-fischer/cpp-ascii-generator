@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QLabel>
+#include <QMouseEvent>
 
 class ClickableLabel : public QLabel
 {

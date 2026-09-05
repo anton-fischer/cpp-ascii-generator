@@ -8,6 +8,8 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class SettingsDock;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,6 +23,9 @@ public:
     void copyAscii();
 
     QString getFilePath();
+
+signals:
+    void imageLoaded();
 
 private slots:
     void on_btn_imageSelect_clicked();
@@ -36,5 +41,5 @@ private:
     void showStatusBarMessage(QString message, unsigned int timeout) const;
 
     QString filePath;
-    QDockWidget* settingsDock = nullptr;
+    SettingsDock* settingsDock = nullptr;
 };

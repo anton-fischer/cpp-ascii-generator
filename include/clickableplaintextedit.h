@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QPlainTextEdit>
+#include <QMouseEvent>
 
 class ClickablePlainTextEdit : public QPlainTextEdit
 {

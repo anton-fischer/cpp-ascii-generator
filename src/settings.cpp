@@ -27,6 +27,11 @@ void Settings::setInvert(bool invert)
     this->invert = invert;
 }
 
+void Settings::setLockRatio(bool lockRatio)
+{
+    this->lockRatio = lockRatio;
+}
+
 QString Settings::getChars()
 {
     return this->chars;
@@ -45,4 +50,9 @@ unsigned int Settings::getHeight()
 bool Settings::getInvert()
 {
     return this->invert;
+}
+
+bool Settings::getLockRatio()
+{
+    return this->lockRatio;
 }

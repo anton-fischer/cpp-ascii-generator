@@ -16,14 +16,20 @@ public:
     explicit SettingsDock(MainWindow *parent = nullptr);
     ~SettingsDock();
 
+public slots:
+    void onImageLoaded();
+
 private slots:
-    void on_input_chars_textChanged(const QString &arg1);
 
-    void on_slider_width_sliderMoved(int position);
+    void on_input_chars_textChanged(const QString &chars);
 
-    void on_slider_height_sliderMoved(int position);
+    void on_slider_width_valueChanged(int width);
+
+    void on_slider_height_valueChanged(int height);
 
     void on_cbx_invert_clicked();
+
+    void on_cbx_lock_ratio_clicked();
 
 private:
     Ui::SettingsDock *ui;

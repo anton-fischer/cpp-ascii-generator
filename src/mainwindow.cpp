@@ -7,9 +7,15 @@
 
 #include "./ui_mainwindow.h"
 
+#include <QApplication>
 #include <QClipboard>
+#include <QDebug>
 #include <QFileDialog>
+#include <QFileInfo>
+#include <QPixmap>
 #include <QTimer>
+
+#include <algorithm>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     showStatusBarMessage("Ascii-Art-Generator v1.0", 0);
 
     ui->txt_output->setVisible(false);
+    adjustSize();
 
     connect(ui->lbl_image, &ClickableLabel::clicked, this, &MainWindow::selectImage);
     connect(ui->txt_output, &ClickablePlainTextEdit::clicked, this, &MainWindow::copyAscii);
@@ -68,7 +75,17 @@ void MainWindow::selectImage()
         )
     );
 
+    // adapt height, because chars are taller than wider
+    const double charAspectCorrection = 0.55;
+
+    const int width = Settings::instance().getWidth();
+    const int height = static_cast<int>(static_cast<double>(pixmap.height()) / pixmap.width() * width * charAspectCorrection);
+
+    Settings::instance().setHeight(height);
+
     showStatusBarMessage("Successfully loaded file: " + filePath, 3000);
+
+    emit imageLoaded();
 
     convertImage();
 }
@@ -84,8 +101,8 @@ void MainWindow::convertImage()
 
     // evaluate settings
     QString chars = Settings::instance().getChars();
-    unsigned int width = Settings::instance().getWidth();
-    unsigned int height = Settings::instance().getHeight(); // TODO this is ignored as of now
+    int width = Settings::instance().getWidth();
+    int height = Settings::instance().getHeight();
 
     if (Settings::instance().getInvert())
     {
@@ -94,7 +111,7 @@ void MainWindow::convertImage()
 
     // actually convert
     Converter converter;
-    QString result = converter.convert(filePath, width, chars);
+    QString result = converter.convert(filePath, chars, width, height);
 
     ui->txt_output->setPlainText(result);
 }
@@ -116,6 +133,8 @@ void MainWindow::showSettingsMenu()
     {
         settingsDock = new SettingsDock(this);
         addDockWidget(Qt::RightDockWidgetArea, settingsDock);
+
+        connect(this, &MainWindow::imageLoaded, settingsDock, &SettingsDock::onImageLoaded);
     }
 
     settingsDock->show();
@@ -124,11 +143,15 @@ void MainWindow::showSettingsMenu()
 
 void MainWindow::showStatusBarMessage(QString message, unsigned int timeout) const {
     ui->statusbar->showMessage(message, timeout);
+    qDebug() << "Showing status bar message: " << message;
 
-    QTimer::singleShot(timeout, this, [this, message]() {
-        ui->statusbar->showMessage("Ascii-Art-Generator v1.0");
-        qDebug() << "Showing status bar message: " << message;
-    });
+    // timeout of 0 means the message is shown until explicitly replaced
+    if (timeout > 0)
+    {
+        QTimer::singleShot(timeout, this, [this]() {
+            ui->statusbar->showMessage("Ascii-Art-Generator v1.0");
+        });
+    }
 }
 
 QString MainWindow::getFilePath()
